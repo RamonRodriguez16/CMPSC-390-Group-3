@@ -1,0 +1,4 @@
+public static void Test
+{
+  system.out.print("This is a test");
+}
