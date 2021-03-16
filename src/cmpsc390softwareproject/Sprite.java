@@ -15,11 +15,15 @@ public class Sprite
     private boolean solid;
     private /* final */ Node node; 
     private double vx, vy;//vx refers to velocity x and  vy velocity y. 
+    
+    private Controller con;
+    private Velocity vel;
 
     public Sprite(Node node, boolean solid)
     {
         this.solid = solid;
         this.node = node;
+        this.vel = new Velocity(node, 0, 0);
     }
     public boolean getSolid()
     {
@@ -61,10 +65,28 @@ public class Sprite
         this.vy = dy;
     }
 
-    public void update()
+    public Controller getController()
     {
-        //add the velocity to the location
-        this.node.setTranslateX(this.node.getTranslateX()+vx);//Translate is the current position of the sprite. The getTranslate is to receive the current position of the sprite.
-        this.node.setTranslateY(this.node.getTranslateY()+vy);//Above comment applies as well to this one. 
+        return con;
+    }
+    
+    public void setController(Controller con)
+    {
+        this.con = con;
+    }
+    
+    public void setVelocity(Node n, double x,double y)
+    {
+        this.vel.setVelocity(n, x, y);
+    }
+    
+    public Velocity getVelocity()
+    {
+        return this.vel;
+    }
+    
+    public void update(double dt)
+    {
+        vel.update(dt);
     }
 }
