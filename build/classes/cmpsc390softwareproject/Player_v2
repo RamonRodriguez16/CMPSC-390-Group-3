@@ -1,0 +1,55 @@
+public class Player 
+{
+    Sprite sprite;
+    
+    String name;
+    int health;
+    int power;
+    int defense;
+    int energy;
+    String type;
+    
+    public void setName(String n) {
+        name = n;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setHealth(int h) {
+        health = h;
+    }
+    public int getHealth() {
+        return health;
+    }
+    public void setPower(int p) {
+        power = p;
+    }
+    public int getPower() {
+        return power;
+    }
+    public void setDefense(int d) {
+        defense = d;
+    }
+    public int getDefense() {
+        return defense;
+    }
+    public void setEnergy(int e) {
+        energy = e;
+    }
+    public int getEnergy() {
+        return energy;
+    }
+    public void setType(String t) {
+        type = t;
+    }
+    public String getType() {
+        return type;
+    }
+    public void setSprite(Sprite s) {
+        sprite = s;
+    }
+    public Sprite getSprite()
+    {
+        return sprite;
+    }
+}
