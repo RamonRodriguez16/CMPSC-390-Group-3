@@ -5,6 +5,7 @@
  */
 package cmpsc390softwareproject;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.shape.Rectangle;
@@ -13,6 +14,9 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 /**
  *
@@ -57,5 +61,26 @@ public class CMPSC390SoftwareProject extends Application {
         root.getChildren().add(largeWing.getNode());
         root.getChildren().add(stoneBox.getNode());
         root.getChildren().add(chains.getNode());
+
+        ImageView image = new ImageView(new Image("images/New_Piskel.png"));
+            //root.getChildren().add(image);
+        //Sprite player = new Sprite(new Rectangle(50, 50, 50, 50), false);
+        Sprite player = new Sprite(image, false);
+            Controller playerCon = new Controller(player.getNode(), player.getVelocity(), scene, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
+            player.setController(playerCon);
+        
+            root.getChildren().add(player.getNode());
+        
+        AnimationTimer animation = new AnimationTimer()  
+        {
+            @Override
+            public void handle(long now)
+            {
+                player.update(0.016);
+            }
+        };
+        animation.start();
+        
+        stage.show();
     }
 }
