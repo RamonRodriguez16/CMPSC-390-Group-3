@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package cmpsc390softwareproject;
 
 import javafx.animation.AnimationTimer;
@@ -42,15 +41,21 @@ public class CMPSC390SoftwareProject extends Application {
         
         //Create item largeWing
         Item largeWing = new Item(new Rectangle (100, 200, 10, 30), true);
-            largeWing.setDesc("It looks big enough to fly a person around, but there's only one...");
+            largeWing.setDesc("Wow! Look at the size of this wing! You could "
+                    + "probably fly around like a bird with this, "
+                    + "shame there's only one of ‘em.");
         
         //Create item stoneBox
         Item stoneBox = new Item(new Rectangle (200, 200, 20, 10), true);
-            stoneBox.setDesc("Small box that's made of stone and very heavy. Upon inspection you can tell it holds 3 gems, although it was meant for 5!");
+            stoneBox.setDesc("Who makes a box out of stone? That’s gotta be "
+                    + "the dum- huh? There’re some gems in here, ‘bout three of "
+                    + "them. But it looks like it could fit about five…");
 
         //Create item chains
         Item chains = new Item(new Rectangle (300, 200, 10, 10), true);    
-            chains.setDesc("They are attached to the floor. I wonder who they were meant for?");
+            chains.setDesc("I’m not one to judge, but I don’t think there’s "
+                    + "any place for chains in a home. Wonder who or what "
+                    + "they were for.");
         
             
         root.getChildren().add(largeWing.getNode());
