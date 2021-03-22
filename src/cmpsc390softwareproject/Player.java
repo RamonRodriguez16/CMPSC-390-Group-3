@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package moving.player;
+package cmpsc390softwareproject;
 
 public class Player {
     String name;
@@ -11,6 +11,7 @@ public class Player {
     int defense;
     int energy;
     String type;
+    Sprite sprite;
     
     public void setName(String n) {
         name = n;
@@ -41,5 +42,12 @@ public class Player {
     }
     public String getType() {
         return type;
+    }
+    public void setSprite(Sprite s) {
+        sprite = s;
+    }
+    public Sprite getSprite()
+    {
+        return sprite;
     }
 }

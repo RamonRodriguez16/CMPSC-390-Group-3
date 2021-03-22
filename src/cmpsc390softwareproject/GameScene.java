@@ -1,4 +1,4 @@
-package GameScene;
+package cmpsc390softwareproject;
 
 /**
  *

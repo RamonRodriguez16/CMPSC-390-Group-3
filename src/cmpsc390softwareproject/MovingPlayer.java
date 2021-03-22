@@ -1,4 +1,4 @@
-package moving.player;
+package cmpsc390softwareproject;
 
 import java.util.Scanner;
 
