@@ -40,6 +40,8 @@ public class GameScene extends Application
         Scene scene = new Scene(root, 300, 300);
         stage.setScene(scene);
 
+        //ImageView image = new ImageView(new Image("resources/New_Piskel.png"));
+            //root.getChildren().add(image);
         Sprite player = new Sprite(new Rectangle(50, 50, 50, 50), false);
             Controller playerCon = new Controller(player.getNode(), player.getVelocity(), scene, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
             player.setController(playerCon);

@@ -18,12 +18,14 @@ public class Sprite
     
     private Controller con;
     private Velocity vel;
+    private Collision col;
 
     public Sprite(Node node, boolean solid)
     {
         this.solid = solid;
         this.node = node;
         this.vel = new Velocity(node, 0, 0);
+        this.col = new Collision(node, vel);
     }
     public boolean getSolid()
     {
@@ -83,6 +85,16 @@ public class Sprite
     public Velocity getVelocity()
     {
         return this.vel;
+    }
+    
+    public void setCollision(Collision col)
+    {
+        this.col = col; //(this.getNode(),this.getvelocityComponent());
+    }
+    
+    public Collision getCollision()
+    {
+        return this.col;
     }
     
     public void update(double dt)
