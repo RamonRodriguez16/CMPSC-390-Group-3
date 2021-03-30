@@ -77,16 +77,22 @@ public class CMPSC390SoftwareProject extends Application {
                 root.getChildren().add(chains.getNode());
 
         // add the player
-        Sprite player = new Sprite(new Rectangle(50, 50, 50, 50), false);
-//        //ImageView image = new ImageView(new Image("images/New_Piskel.png", 125, 125, true, true));
-//            image.setY(scene.getWidth() / 2);
-//            image.setX(scene.getHeight() / 2);
-                // Testing ->
-                    //root.getChildren().add(image);
-        //Sprite player = new Sprite(image, false);
+        // Sprite player = new Sprite(new Rectangle(50, 50, 50, 50), false);
+        ImageView image = new ImageView(new Image("images/New_Piskel.png", 50, 50, true, true));
+            image.setY(scene.getWidth() / 2);
+            image.setX(scene.getHeight() / 2);
+//                 Testing ->
+//                    root.getChildren().add(image);
+        Player player = new Player(image, false);
             Controller playerCon = new Controller(player.getNode(), player.getVelocity(), scene, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
             player.setController(playerCon);
                 root.getChildren().add(player.getNode());
+                
+        ImageView image2 = new ImageView(new Image("images/Final_Boss.png", 50, 50, true, true));
+            image2.setY(scene.getWidth() / 5);
+            image2.setX(scene.getHeight() / 1.5);
+        Enemy enemy = new Enemy(image2, true);
+            root.getChildren().add(enemy.getNode());
             
         // add the scene boarders
         Sprite topWall = new Sprite(new Rectangle(0, 0, scene.getWidth(), 5), true);
@@ -110,8 +116,14 @@ public class CMPSC390SoftwareProject extends Application {
                 player.getCollision().checkCollisionX(leftWall.getNode());
                 player.getCollision().checkCollisionX(rightWall.getNode());
                 
-                player.getCollision().checkCollision(largeWing.getNode());
+                player.getCollision().checkCollisionX(largeWing.getNode());
+                player.getCollision().checkCollisionY(largeWing.getNode());
+                player.getCollision().checkCollisionX(stoneBox.getNode());
+                player.getCollision().checkCollisionY(stoneBox.getNode());
+                player.getCollision().checkCollisionX(chains.getNode());
+                player.getCollision().checkCollisionY(chains.getNode());
                 
+                enemy.checkCollision(player, scene);
 //                if(moving == false)
 //                {
 //                    switch(player.getVelocity().velDif())

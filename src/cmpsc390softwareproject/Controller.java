@@ -33,7 +33,8 @@ public class Controller {
             @Override
             public void execute()
             {
-                vel.setVelocity(node, 0, -2);
+                vel.setVelocity(node, 0, -1);
+                // velDif = -2
             }
         };
         moveDown = new Command()
@@ -41,7 +42,8 @@ public class Controller {
             @Override
             public void execute()
             {
-                vel.setVelocity(node, 0, 2);
+                vel.setVelocity(node, 0, 1);
+                // velDif = 2
             }
         };
         moveLeft = new Command()
@@ -49,7 +51,8 @@ public class Controller {
             @Override
             public void execute()
             {
-                vel.setVelocity(node, -2, 0);
+                vel.setVelocity(node, -1, 0);
+                // velDif = -1
             }
         };
         moveRight = new Command()
@@ -57,7 +60,8 @@ public class Controller {
             @Override
             public void execute()
             {
-                vel.setVelocity(node, 2, 0);
+                vel.setVelocity(node, 1, 0);
+                // velDif = 1
             }
         };
         
@@ -67,6 +71,7 @@ public class Controller {
             public void execute()
             {
                 vel.setVelocity(node, 0, 0);
+                // velDif = 0
             }
         };
         
