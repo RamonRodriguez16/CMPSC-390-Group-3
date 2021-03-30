@@ -40,19 +40,34 @@ public class CMPSC390SoftwareProject extends Application {
         
         
         //Create item largeWing
-        Item largeWing = new Item(new Rectangle (100, 200, 10, 30), true);
+        ImageView object_Wing = new ImageView(new Image("images/object_Wing.png"));
+        object_Wing.setFitWidth(40);
+        object_Wing.setFitHeight(42);
+        object_Wing.setX(100);
+        object_Wing.setY(200);
+        Item largeWing = new Item(object_Wing, true);
             largeWing.setDesc("Wow! Look at the size of this wing! You could "
                     + "probably fly around like a bird with this, "
                     + "shame there's only one of ‘em.");
         
         //Create item stoneBox
-        Item stoneBox = new Item(new Rectangle (200, 200, 20, 10), true);
+        ImageView object_Box = new ImageView(new Image("images/object_Box.png"));
+        object_Box.setFitWidth(50);
+        object_Box.setFitHeight(17);
+        object_Box.setX(200);
+        object_Box.setY(200);
+        Item stoneBox = new Item(object_Box, true);
             stoneBox.setDesc("Who makes a box out of stone? That’s gotta be "
                     + "the dum- huh? There’re some gems in here, ‘bout three of "
                     + "them. But it looks like it could fit about five…");
 
         //Create item chains
-        Item chains = new Item(new Rectangle (300, 200, 10, 10), true);    
+        ImageView object_Chains = new ImageView(new Image("images/object_Chains.png"));
+        object_Chains.setFitWidth(40);
+        object_Chains.setFitHeight(20);
+        object_Chains.setX(300);
+        object_Chains.setY(200);
+        Item chains = new Item(object_Chains, true); 
             chains.setDesc("I’m not one to judge, but I don’t think there’s "
                     + "any place for chains in a home. Wonder who or what "
                     + "they were for.");
