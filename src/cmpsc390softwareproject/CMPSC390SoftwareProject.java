@@ -31,6 +31,8 @@ public class CMPSC390SoftwareProject extends Application {
     @Override
     public void start(Stage stage) throws Exception
     {
+        boolean moving = false;
+        
         stage.setTitle("Group 3 - Game");
         
         Group root = new Group();
@@ -49,7 +51,6 @@ public class CMPSC390SoftwareProject extends Application {
             largeWing.setDesc("Wow! Look at the size of this wing! You could "
                     + "probably fly around like a bird with this, "
                     + "shame there's only one of ‘em.");
-        
         //Create item stoneBox
         ImageView object_Box = new ImageView(new Image("images/object_Box.png"));
         object_Box.setFitWidth(50);
@@ -60,7 +61,6 @@ public class CMPSC390SoftwareProject extends Application {
             stoneBox.setDesc("Who makes a box out of stone? That’s gotta be "
                     + "the dum- huh? There’re some gems in here, ‘bout three of "
                     + "them. But it looks like it could fit about five…");
-
         //Create item chains
         ImageView object_Chains = new ImageView(new Image("images/object_Chains.png"));
         object_Chains.setFitWidth(40);
@@ -71,31 +71,75 @@ public class CMPSC390SoftwareProject extends Application {
             chains.setDesc("I’m not one to judge, but I don’t think there’s "
                     + "any place for chains in a home. Wonder who or what "
                     + "they were for.");
-        
-            
-        root.getChildren().add(largeWing.getNode());
-        root.getChildren().add(stoneBox.getNode());
-        root.getChildren().add(chains.getNode());
+            // add items
+                root.getChildren().add(largeWing.getNode());
+                root.getChildren().add(stoneBox.getNode());
+                root.getChildren().add(chains.getNode());
 
-        ImageView image = new ImageView(new Image("images/New_Piskel.png"));
-            //root.getChildren().add(image);
-        //Sprite player = new Sprite(new Rectangle(50, 50, 50, 50), false);
-        Sprite player = new Sprite(image, false);
+        // add the player
+        Sprite player = new Sprite(new Rectangle(50, 50, 50, 50), false);
+//        //ImageView image = new ImageView(new Image("images/New_Piskel.png", 125, 125, true, true));
+//            image.setY(scene.getWidth() / 2);
+//            image.setX(scene.getHeight() / 2);
+                // Testing ->
+                    //root.getChildren().add(image);
+        //Sprite player = new Sprite(image, false);
             Controller playerCon = new Controller(player.getNode(), player.getVelocity(), scene, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
             player.setController(playerCon);
-        
-            root.getChildren().add(player.getNode());
-        
+                root.getChildren().add(player.getNode());
+            
+        // add the scene boarders
+        Sprite topWall = new Sprite(new Rectangle(0, 0, scene.getWidth(), 5), true);
+        Sprite bottomWall = new Sprite(new Rectangle(0, scene.getHeight() - 5, scene.getWidth(), 5), true);
+        Sprite leftWall = new Sprite(new Rectangle(0, 0, 5, scene.getHeight()), true);
+        Sprite rightWall = new Sprite(new Rectangle(scene.getWidth() - 5, 0, 5, scene.getHeight()), true);
+            root.getChildren().add(topWall.getNode());
+            root.getChildren().add(bottomWall.getNode());
+            root.getChildren().add(leftWall.getNode());
+            root.getChildren().add(rightWall.getNode());
+            
         AnimationTimer animation = new AnimationTimer()  
         {
             @Override
             public void handle(long now)
             {
                 player.update(0.016);
+                
+                player.getCollision().checkCollisionY(topWall.getNode());
+                player.getCollision().checkCollisionY(bottomWall.getNode());
+                player.getCollision().checkCollisionX(leftWall.getNode());
+                player.getCollision().checkCollisionX(rightWall.getNode());
+                
+                player.getCollision().checkCollision(largeWing.getNode());
+                
+//                if(moving == false)
+//                {
+//                    switch(player.getVelocity().velDif())
+//                    {
+//                        case -2:
+//                            System.out.println("going left");
+//                            break;
+//                        case -1:
+//                            System.out.println("going up");
+//                            break;
+//                        case 1:
+//                            System.out.println("going down");
+//                            break;
+//                        case 2:
+//                            System.out.println("going right");
+//                            break;
+//                        default:
+//                            break;
+//                    }
+//                }
+                
             }
         };
         animation.start();
         
         stage.show();
+        
+        System.out.println("This is a test.");
+        
     }
 }
