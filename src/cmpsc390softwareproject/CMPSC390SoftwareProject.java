@@ -149,9 +149,6 @@ public class CMPSC390SoftwareProject extends Application {
         };
         animation.start();
         
-        stage.show();
-        
-        System.out.println("This is a test.");
-        
+        stage.show();        
     }
 }
