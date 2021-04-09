@@ -25,6 +25,8 @@ import javafx.stage.Stage;
 public class CMPSC390SoftwareProject extends Application {
     public static void main(String[] args) 
     {
+        PopupFrame frame = new PopupFrame();
+        frame.show();
         launch(args);
     }
     
