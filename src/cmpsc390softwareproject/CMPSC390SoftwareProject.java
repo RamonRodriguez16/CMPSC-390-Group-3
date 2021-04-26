@@ -9,14 +9,13 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.shape.Rectangle;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 /**
  *
@@ -35,18 +34,43 @@ public class CMPSC390SoftwareProject extends Application {
         
         stage.setTitle("Group 3 - Game");
         
+        GridPane window = new GridPane();
+        window.setMinSize(500, 400);
         Group root = new Group();
-        Scene scene = new Scene(root, 500, 400);
+        window.add(root, 0, 0);
+        Group fightLayout = new Group();
+        Scene scene = new Scene(window, 500, 400);
+        Scene fightScene = new Scene(fightLayout, 500, 400);
         stage.setScene(scene); 
         stage.show();
         
+        
+        
+        // Start the Fight
+        Button fightButton = new Button("FIGHT!");
+        fightButton.setOnAction(e -> stage.setScene(fightScene));
+        root.getChildren().add(fightButton);
+        
+        // Exit the Fight
+        Button exitButton = new Button("FLEE!");
+        exitButton.setOnAction(e -> stage.setScene(scene));
+        fightLayout.getChildren().add(exitButton);
+        
+        // Fight Menu
+        /*
+        GridPane grid = new GridPane();
+        grid.setPrefHeight(100);
+        grid.setPrefWidth(500);
+        grid.BackgroundImage("images/textbox.png");
+        fightLayout.getChildren().add();
+        */
         
         //Create item largeWing
         ImageView object_Wing = new ImageView(new Image("images/object_Wing.png"));
         object_Wing.setFitWidth(40);
         object_Wing.setFitHeight(42);
-        object_Wing.setX(100);
-        object_Wing.setY(200);
+        object_Wing.setX(130);
+        object_Wing.setY((scene.getHeight() -100) / 2);
         Item largeWing = new Item(object_Wing, true);
             largeWing.setDesc("Wow! Look at the size of this wing! You could "
                     + "probably fly around like a bird with this, "
@@ -55,8 +79,8 @@ public class CMPSC390SoftwareProject extends Application {
         ImageView object_Box = new ImageView(new Image("images/object_Box.png"));
         object_Box.setFitWidth(50);
         object_Box.setFitHeight(17);
-        object_Box.setX(200);
-        object_Box.setY(200);
+        object_Box.setX(225);
+        object_Box.setY((scene.getHeight() -100) / 2);
         Item stoneBox = new Item(object_Box, true);
             stoneBox.setDesc("Who makes a box out of stone? That’s gotta be "
                     + "the dum- huh? There’re some gems in here, ‘bout three of "
@@ -65,8 +89,8 @@ public class CMPSC390SoftwareProject extends Application {
         ImageView object_Chains = new ImageView(new Image("images/object_Chains.png"));
         object_Chains.setFitWidth(40);
         object_Chains.setFitHeight(20);
-        object_Chains.setX(300);
-        object_Chains.setY(200);
+        object_Chains.setX(330);
+        object_Chains.setY((scene.getHeight() -100) / 2);
         Item chains = new Item(object_Chains, true); 
             chains.setDesc("I’m not one to judge, but I don’t think there’s "
                     + "any place for chains in a home. Wonder who or what "
@@ -79,8 +103,8 @@ public class CMPSC390SoftwareProject extends Application {
         // add the player
         // Sprite player = new Sprite(new Rectangle(50, 50, 50, 50), false);
         ImageView image = new ImageView(new Image("images/New_Piskel.png", 50, 50, true, true));
-            image.setY(scene.getWidth() / 2);
-            image.setX(scene.getHeight() / 2);
+            image.setY((scene.getHeight() -100) * 0.75);
+            image.setX(scene.getWidth() / 2 - 25);
 //                 Testing ->
 //                    root.getChildren().add(image);
         Player player = new Player(image, false);
@@ -89,16 +113,16 @@ public class CMPSC390SoftwareProject extends Application {
                 root.getChildren().add(player.getNode());
                 
         ImageView image2 = new ImageView(new Image("images/Final_Boss.png", 50, 50, true, true));
-            image2.setY(scene.getWidth() / 5);
-            image2.setX(scene.getHeight() / 1.5);
+            image2.setY((scene.getHeight() -100) * 0.25);
+            image2.setX(scene.getWidth() * 0.5 - 25);
         Enemy enemy = new Enemy(image2, true);
             root.getChildren().add(enemy.getNode());
             
         // add the scene boarders
         Sprite topWall = new Sprite(new Rectangle(0, 0, scene.getWidth(), 5), true);
-        Sprite bottomWall = new Sprite(new Rectangle(0, scene.getHeight() - 5, scene.getWidth(), 5), true);
-        Sprite leftWall = new Sprite(new Rectangle(0, 0, 5, scene.getHeight()), true);
-        Sprite rightWall = new Sprite(new Rectangle(scene.getWidth() - 5, 0, 5, scene.getHeight()), true);
+        Sprite bottomWall = new Sprite(new Rectangle(0, scene.getHeight() - 5 - 100, scene.getWidth(), 5), true);
+        Sprite leftWall = new Sprite(new Rectangle(0, 0, 5, scene.getHeight() - 100), true);
+        Sprite rightWall = new Sprite(new Rectangle(scene.getWidth() - 5, 0, 5, scene.getHeight() -100), true);
             root.getChildren().add(topWall.getNode());
             root.getChildren().add(bottomWall.getNode());
             root.getChildren().add(leftWall.getNode());
@@ -149,6 +173,9 @@ public class CMPSC390SoftwareProject extends Application {
         };
         animation.start();
         
-        stage.show();        
+        
+        Narrator narrator = new Narrator();
+        window.add(narrator, 0, 1);
+        stage.show();
     }
 }
