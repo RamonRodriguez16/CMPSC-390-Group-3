@@ -11,12 +11,19 @@ import static javafx.application.Application.launch;
 import javafx.scene.shape.Rectangle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 /**
  *
@@ -34,9 +41,23 @@ public class CMPSC390SoftwareProject extends Application {
         stage.setTitle("Group 3 - Game");
         
         Group root = new Group();
+        Group fightLayout = new Group();
         Scene scene = new Scene(root, 500, 400);
+        Scene fightScene = new Scene(fightLayout, 500, 400);
         stage.setScene(scene); 
         stage.show();
+        
+        
+        
+        // Start the Fight
+        Button fightButton = new Button("FIGHT!");
+        fightButton.setOnAction(e -> stage.setScene(fightScene));
+        root.getChildren().add(fightButton);
+        
+        // Exit the Fight
+        Button exitButton = new Button("FLEE!");
+        exitButton.setOnAction(e -> stage.setScene(scene));
+        fightLayout.getChildren().add(exitButton);
         
         
         //Create item largeWing
@@ -62,6 +83,7 @@ public class CMPSC390SoftwareProject extends Application {
         root.getChildren().add(stoneBox.getNode());
         root.getChildren().add(chains.getNode());
 
+        
         ImageView image = new ImageView(new Image("images/New_Piskel.png"));
             //root.getChildren().add(image);
         //Sprite player = new Sprite(new Rectangle(50, 50, 50, 50), false);
@@ -81,6 +103,28 @@ public class CMPSC390SoftwareProject extends Application {
         };
         animation.start();
         
+        
+        // Testing a narrator thing
+        /*
+        Rectangle r = new Rectangle();
+        r.setX(0);
+        r.setY(300);
+        r.setWidth(500);
+        r.setHeight(100);
+        r.setArcWidth(20);
+        r.setArcHeight(20);
+        r.setStroke(Color.BLACK);
+        r.setFill(Color.WHITE);
+        root.getChildren().add(r); */
+        
+        //Text text = new Text("If this works I am one step closer to making a solid game");
+        
+        Narrator narrator = new Narrator();
+        
+        Text text = new Text("If this works I am one step closer to making a solid game");
+        text.setX(narrator.getX() + 20);
+        text.setY(narrator.getY() + 50);
+        root.getChildren().addAll(narrator, text);
         stage.show();
     }
 }
