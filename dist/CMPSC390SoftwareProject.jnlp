@@ -8,8 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CMPSC390SoftwareProject.jar" size="29062" download="eager" />
+    <jar href="CMPSC390SoftwareProject.jar" size="33707" download="eager" />
   </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="CMPSC390SoftwareProject" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
   <jfx:javafx-desc  width="800" height="600" main-class="cmpsc390softwareproject.CMPSC390SoftwareProject"  name="CMPSC390SoftwareProject" />
   <update check="always"/>
 </jnlp>
