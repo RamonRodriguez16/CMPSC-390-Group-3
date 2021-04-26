@@ -48,6 +48,12 @@ public class Velocity
         this.dy = dy;
     }    
     
+    public int velDif()
+    {
+        int tempVelX = (int)this.dx * 2;
+        return ((int)this.dy + tempVelX);
+    }
+    
     public void update(double dt)    
     {        
         double ticks = 60*dt;        

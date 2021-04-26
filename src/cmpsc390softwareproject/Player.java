@@ -5,14 +5,26 @@
  */
 package cmpsc390softwareproject;
 
-public class Player {
+import javafx.scene.Node;
+
+public class Player extends Sprite {
     String name;
     int power;
     int defense;
     int energy;
+    int health;
     String type;
     Sprite sprite;
     
+    public Player(Node node, boolean solid)
+    {
+        super(node, solid);
+        name = "Dummy";
+        power = 0;
+        defense = 0;
+        energy = 0;
+        type = "dummy";
+    }
     public void setName(String n) {
         name = n;
     }
@@ -36,6 +48,12 @@ public class Player {
     }
     public int getEnergy() {
         return energy;
+    }
+    public void setHealth(int h) {
+        health = h;
+    }
+    public int getHealth() {
+        return health;
     }
     public void setType(String t) {
         type = t;
