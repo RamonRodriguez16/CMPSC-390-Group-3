@@ -5,27 +5,47 @@
  */
 package cmpsc390softwareproject;
 
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
  *
- * @author ramon, technically
+ * @author ramon, david
  */
-public class Narrator extends Rectangle{
+public class Narrator extends StackPane{
     private boolean isDescribing;
+    String textOutput = "";
     
     public Narrator()
     {
-        setX(0);
-        setY(300);
-        setWidth(500);
-        setHeight(100);
-        setArcWidth(20);
-        setArcHeight(20);
-        setStroke(Color.BLACK);
-        setFill(Color.WHITE);
+        
+        
+        Rectangle n = new Rectangle();
+        n.setX(0);
+        n.setY(300);
+        n.setWidth(500);
+        n.setHeight(100);
+        Image textbox = new Image("images/textbox.png");
+        ImagePattern bg = new ImagePattern(textbox);
+        n.setFill(bg);
+        
+        textOutput = "Alright, so the text works and so does the narrator. We have a sick text box. "
+                + "Now we just gotta implement the menu. It should not be too bad!";
+        
+        Text text = new Text(textOutput);
+        text.setFill(Color.WHITE);
+        text.setFont(Font.font("Calibri", 16));
+        text.setWrappingWidth(485);
+        text.setX(n.getX() + 15);
+        text.setY(n.getY() + 30);
+        
+        getChildren().add(n);
+        getChildren().add(text);
         
         isDescribing = false;
     }
