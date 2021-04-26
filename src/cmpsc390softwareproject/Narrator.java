@@ -5,17 +5,32 @@
  */
 package cmpsc390softwareproject;
 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+
 /**
  *
  * @author ramon, technically
  */
-public class Narrator {
+public class Narrator extends Rectangle{
     private boolean isDescribing;
     
     public Narrator()
     {
+        setX(0);
+        setY(300);
+        setWidth(500);
+        setHeight(100);
+        setArcWidth(20);
+        setArcHeight(20);
+        setStroke(Color.BLACK);
+        setFill(Color.WHITE);
+        
         isDescribing = false;
     }
+    
+    
     
     private void describeObject(Sprite sprite, Player player)
     {
