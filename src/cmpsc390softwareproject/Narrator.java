@@ -26,19 +26,12 @@ public class Narrator extends StackPane{
     
     
     public Narrator()
-    {
-        
-        
-        
+    {       
         n.setWidth(500);
         n.setHeight(100);
         Image textbox = new Image("images/textbox.png");
         ImagePattern bg = new ImagePattern(textbox);
         n.setFill(bg);
-        /*
-        textOutput = "Alright, so the text works and so does the narrator. We have a sick text box. "
-                + "Now we just gotta implement the menu. It should not be too bad!";
-        */
         
         getChildren().add(n);
         getChildren().add(myText);

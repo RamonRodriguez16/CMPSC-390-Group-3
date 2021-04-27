@@ -47,6 +47,7 @@ public class CMPSC390SoftwareProject extends Application {
         Narrator narrator = new Narrator();
         window.add(narrator, 0, 1);
         
+        
         // Start the Fight
         Button fightButton = new Button("FIGHT!");
         fightButton.setOnAction(e -> stage.setScene(fightScene));
