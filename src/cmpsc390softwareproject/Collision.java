@@ -39,4 +39,22 @@ public class Collision
                 V.setVelocityX(-V.getVelocityX() * 2.0);
         }
     }
+    
+    void checkCollisionY(Node target, Item item, Narrator nar)
+    {
+        if (this.node.getBoundsInParent().intersects(target.getBoundsInParent())){
+            V.setVelocityY(-V.getVelocityY() * 2.0);
+
+            nar.setText(item.getDesc());
+        }
+    }
+
+    void checkCollisionX(Node target, Item item, Narrator nar) 
+    {
+        if (this.node.getBoundsInParent().intersects(target.getBoundsInParent())){
+            V.setVelocityX(-V.getVelocityX() * 2.0);
+
+            nar.setText(item.getDesc());
+        }
+    }
 }

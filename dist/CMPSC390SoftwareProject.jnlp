@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CMPSC390SoftwareProject.jar" size="36732" download="eager" />
+    <jar href="CMPSC390SoftwareProject.jar" size="36947" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="cmpsc390softwareproject.CMPSC390SoftwareProject"  name="CMPSC390SoftwareProject" />
   <update check="always"/>

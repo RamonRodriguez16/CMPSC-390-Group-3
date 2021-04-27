@@ -32,7 +32,7 @@ public class CMPSC390SoftwareProject extends Application {
     {
         boolean moving = false;
         
-        stage.setTitle("Group 3 - Game");
+        stage.setTitle("Group 3 - Game");  
         
         GridPane window = new GridPane();
         window.setMinSize(500, 400);
@@ -142,12 +142,12 @@ public class CMPSC390SoftwareProject extends Application {
                 player.getCollision().checkCollisionX(leftWall.getNode());
                 player.getCollision().checkCollisionX(rightWall.getNode());
                 
-                player.getCollision().checkCollisionX(largeWing.getNode());
-                player.getCollision().checkCollisionY(largeWing.getNode());
-                player.getCollision().checkCollisionX(stoneBox.getNode());
-                player.getCollision().checkCollisionY(stoneBox.getNode());
-                player.getCollision().checkCollisionX(chains.getNode());
-                player.getCollision().checkCollisionY(chains.getNode());
+                player.getCollision().checkCollisionX(largeWing.getNode(), largeWing, narrator);
+                player.getCollision().checkCollisionY(largeWing.getNode(), largeWing, narrator);
+                player.getCollision().checkCollisionX(stoneBox.getNode(), stoneBox, narrator);
+                player.getCollision().checkCollisionY(stoneBox.getNode(), stoneBox, narrator);
+                player.getCollision().checkCollisionX(chains.getNode(), chains, narrator);
+                player.getCollision().checkCollisionY(chains.getNode(), chains, narrator);
                 
                 enemy.checkCollision(player, scene);
 //                if(moving == false)
