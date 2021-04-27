@@ -20,33 +20,28 @@ import javafx.scene.text.Text;
 public class Narrator extends StackPane{
     private boolean isDescribing;
     String textOutput = "";
+    Rectangle n = new Rectangle();
+    
+    Text myText = new Text(textOutput);
+    
     
     public Narrator()
     {
         
         
-        Rectangle n = new Rectangle();
-        n.setX(0);
-        n.setY(300);
+        
         n.setWidth(500);
         n.setHeight(100);
         Image textbox = new Image("images/textbox.png");
         ImagePattern bg = new ImagePattern(textbox);
         n.setFill(bg);
-        
+        /*
         textOutput = "Alright, so the text works and so does the narrator. We have a sick text box. "
                 + "Now we just gotta implement the menu. It should not be too bad!";
-        
-        Text text = new Text(textOutput);
-        text.setFill(Color.WHITE);
-        text.setFont(Font.font("Calibri", 16));
-        text.setWrappingWidth(485);
-        text.setX(n.getX() + 15);
-        text.setY(n.getY() + 30);
+        */
         
         getChildren().add(n);
-        getChildren().add(text);
-        
+        getChildren().add(myText);
         isDescribing = false;
     }
     
@@ -71,6 +66,20 @@ public class Narrator extends StackPane{
         System.out.println(player.getPower());
         System.out.println(player.getDefense());
         System.out.println(player.getEnergy());
+    }
+    
+    public void setText(String newText){
+        getChildren().remove(myText);
+        
+        myText = new Text(newText);
+        
+        myText.setFill(Color.WHITE);
+        myText.setFont(Font.font("Calibri", 16));
+        myText.setWrappingWidth(485);
+        myText.setX(n.getX() + 15);
+        myText.setY(n.getY() + 30);
+        
+        this.getChildren().add(myText);
     }
     
     /*

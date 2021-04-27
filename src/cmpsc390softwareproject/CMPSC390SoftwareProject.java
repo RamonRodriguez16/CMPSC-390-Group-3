@@ -44,7 +44,8 @@ public class CMPSC390SoftwareProject extends Application {
         stage.setScene(scene); 
         stage.show();
         
-        
+        Narrator narrator = new Narrator();
+        window.add(narrator, 0, 1);
         
         // Start the Fight
         Button fightButton = new Button("FIGHT!");
@@ -173,9 +174,6 @@ public class CMPSC390SoftwareProject extends Application {
         };
         animation.start();
         
-        
-        Narrator narrator = new Narrator();
-        window.add(narrator, 0, 1);
         stage.show();
     }
 }
