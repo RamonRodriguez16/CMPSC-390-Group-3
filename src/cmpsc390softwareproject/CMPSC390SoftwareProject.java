@@ -63,7 +63,7 @@ public class CMPSC390SoftwareProject extends Application {
                 // add the background color
                 root.getChildren().add(rootBackground);
         
-        // create actual boarders
+        // create borders to root scene
         Sprite topWall = new Sprite(new Rectangle(0, 0, rootScene.getWidth(), 5), true);
         Sprite bottomWall = new Sprite(new Rectangle(0, rootScene.getHeight() - 5 - 100, rootScene.getWidth(), 5), true);
         Sprite leftWall = new Sprite(new Rectangle(0, 0, 5, rootScene.getHeight() - 100), true);
@@ -73,49 +73,49 @@ public class CMPSC390SoftwareProject extends Application {
             root.getChildren().add(leftWall.getNode());
             root.getChildren().add(rightWall.getNode());
         
-        // create visual boarders
-        ImageView top_wall = new ImageView(new Image("images/Brick_wall.png"));
-            top_wall.setFitWidth(rootScene.getWidth() / 10.0);
-            top_wall.setFitHeight(25);
-            top_wall.setX(0);
-            top_wall.setY(0);
-            Sprite top_wallSprite = new Sprite(top_wall, true);
-                root.getChildren().add(top_wallSprite.getNode());
-        ImageView top_wall2 = new ImageView(new Image("images/Brick_wall.png"));
-            top_wall2.setFitWidth(rootScene.getWidth() / 10.0);
-            top_wall2.setFitHeight(25);
-            top_wall2.setX(100);
-            top_wall2.setY(0);
-            Sprite top_wallSprite2 = new Sprite(top_wall2, true);
-                root.getChildren().add(top_wallSprite2.getNode());
-        ImageView top_wall3 = new ImageView(new Image("images/Brick_wall.png"));
-            top_wall3.setFitWidth(rootScene.getWidth() / 10.0);
-            top_wall3.setFitHeight(25);
-            top_wall3.setX(200);
-            top_wall3.setY(0);
-            Sprite top_wallSprite3 = new Sprite(top_wall3, true);
-                root.getChildren().add(top_wallSprite3.getNode());
-        ImageView top_wall4 = new ImageView(new Image("images/Brick_wall.png"));
-            top_wall4.setFitWidth(rootScene.getWidth() / 10.0);
-            top_wall4.setFitHeight(25);
-            top_wall4.setX(300);
-            top_wall4.setY(0);
-            Sprite top_wallSprite4 = new Sprite(top_wall4, true);
-                root.getChildren().add(top_wallSprite4.getNode());
-        ImageView top_wall5 = new ImageView(new Image("images/Brick_wall.png"));
-            top_wall5.setFitWidth(rootScene.getWidth() / 10.0);
-            top_wall5.setFitHeight(25);
-            top_wall5.setX(400);
-            top_wall5.setY(0);
-            Sprite top_wallSprite5 = new Sprite(top_wall5, true);
-                root.getChildren().add(top_wallSprite5.getNode());
-//        ImageView bot_wall = new ImageView(new Image("images/Brick_wall.png"));
-//            bot_wall.setFitWidth(50);
-//            bot_wall.setFitHeight(50);
-//            bot_wall.setX(rootScene.getWidth());
-//            bot_wall.setY(rootScene.getHeight() - (rootScene.getHeight() / 4.0));
-//            Sprite bot_wallSprite = new Sprite(bot_wall, true);
-//                root.getChildren().add(bot_wallSprite.getNode());
+//        // create visual boarders
+//        ImageView top_wall = new ImageView(new Image("images/Brick_wall.png"));
+//            top_wall.setFitWidth(rootScene.getWidth() / 10.0);
+//            top_wall.setFitHeight(25);
+//            top_wall.setX(0);
+//            top_wall.setY(0);
+//            Sprite top_wallSprite = new Sprite(top_wall, true);
+//                root.getChildren().add(top_wallSprite.getNode());
+//        ImageView top_wall2 = new ImageView(new Image("images/Brick_wall.png"));
+//            top_wall2.setFitWidth(rootScene.getWidth() / 10.0);
+//            top_wall2.setFitHeight(25);
+//            top_wall2.setX(100);
+//            top_wall2.setY(0);
+//            Sprite top_wallSprite2 = new Sprite(top_wall2, true);
+//                root.getChildren().add(top_wallSprite2.getNode());
+//        ImageView top_wall3 = new ImageView(new Image("images/Brick_wall.png"));
+//            top_wall3.setFitWidth(rootScene.getWidth() / 10.0);
+//            top_wall3.setFitHeight(25);
+//            top_wall3.setX(200);
+//            top_wall3.setY(0);
+//            Sprite top_wallSprite3 = new Sprite(top_wall3, true);
+//                root.getChildren().add(top_wallSprite3.getNode());
+//        ImageView top_wall4 = new ImageView(new Image("images/Brick_wall.png"));
+//            top_wall4.setFitWidth(rootScene.getWidth() / 10.0);
+//            top_wall4.setFitHeight(25);
+//            top_wall4.setX(300);
+//            top_wall4.setY(0);
+//            Sprite top_wallSprite4 = new Sprite(top_wall4, true);
+//                root.getChildren().add(top_wallSprite4.getNode());
+//        ImageView top_wall5 = new ImageView(new Image("images/Brick_wall.png"));
+//            top_wall5.setFitWidth(rootScene.getWidth() / 10.0);
+//            top_wall5.setFitHeight(25);
+//            top_wall5.setX(400);
+//            top_wall5.setY(0);
+//            Sprite top_wallSprite5 = new Sprite(top_wall5, true);
+//                root.getChildren().add(top_wallSprite5.getNode());
+////        ImageView bot_wall = new ImageView(new Image("images/Brick_wall.png"));
+////            bot_wall.setFitWidth(50);
+////            bot_wall.setFitHeight(50);
+////            bot_wall.setX(rootScene.getWidth());
+////            bot_wall.setY(rootScene.getHeight() - (rootScene.getHeight() / 4.0));
+////            Sprite bot_wallSprite = new Sprite(bot_wall, true);
+////                root.getChildren().add(bot_wallSprite.getNode());
                 
         Narrator rootNarrator = new Narrator();
             rootWindow.add(rootNarrator, 0, 1);
@@ -153,6 +153,20 @@ public class CMPSC390SoftwareProject extends Application {
                 root.getChildren().add(largeWing.getNode());
                 root.getChildren().add(stoneBox.getNode());
                 root.getChildren().add(chains.getNode());
+                
+        ImageView rootImage = new ImageView(new Image("images/New_Piskel.png", 50, 50, true, true));
+            rootImage.setY((rootScene.getHeight() -100) * 0.75);
+            rootImage.setX(rootScene.getWidth() / 2 - 25);
+        Player rootPlayer = new Player(rootImage, false);
+            Controller playerCon = new Controller(rootPlayer.getNode(), rootPlayer.getVelocity(), rootScene, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
+            rootPlayer.setController(playerCon);
+                root.getChildren().add(rootPlayer.getNode());
+                
+        ImageView rootImage2 = new ImageView(new Image("images/Final_Boss.png", 50, 50, true, true));
+            rootImage2.setY((rootScene.getHeight() -100) * 0.25);
+            rootImage2.setX(rootScene.getWidth() * 0.5 - 25);
+        Enemy rootEnemy = new Enemy(rootImage2, true);
+            root.getChildren().add(rootEnemy.getNode());
             
             
             
@@ -162,10 +176,34 @@ public class CMPSC390SoftwareProject extends Application {
             fightBackground.setY(0);
                 // add the background color
                 fight.getChildren().add(fightBackground);
+                
+        // add borders to the fight scene
+        Sprite topWall2 = new Sprite(new Rectangle(0, 0, rootScene.getWidth(), 5), true);
+        Sprite bottomWall2 = new Sprite(new Rectangle(0, rootScene.getHeight() - 5 - 100, rootScene.getWidth(), 5), true);
+        Sprite leftWall2 = new Sprite(new Rectangle(0, 0, 5, rootScene.getHeight() - 100), true);
+        Sprite rightWall2 = new Sprite(new Rectangle(rootScene.getWidth() - 5, 0, 5, rootScene.getHeight() -100), true);    
+            fight.getChildren().add(topWall2.getNode());
+            fight.getChildren().add(bottomWall2.getNode());
+            fight.getChildren().add(leftWall2.getNode());
+            fight.getChildren().add(rightWall2.getNode());
         
         Narrator fightNarrator = new Narrator();
             fightWindow.add(fightNarrator, 0, 1);
-        
+            
+        ImageView fightImage = new ImageView(new Image("images/New_Piskel.png", 50, 50, true, true));
+            fightImage.setY((rootScene.getHeight() -100) * 0.75);
+            fightImage.setX(rootScene.getWidth() / 2 - 25);
+        Player fightPlayer = new Player(fightImage, false);
+            Controller fightCon = new Controller(fightPlayer.getNode(), fightPlayer.getVelocity(), fightScene, KeyCode.UNDEFINED, KeyCode.UNDEFINED, KeyCode.UNDEFINED, KeyCode.UNDEFINED);
+            fightPlayer.setController(playerCon);
+                fight.getChildren().add(fightPlayer.getNode());
+                
+        ImageView fightImage2 = new ImageView(new Image("images/Final_Boss.png", 50, 50, true, true));
+            fightImage2.setY((rootScene.getHeight() -100) * 0.25);
+            fightImage2.setX(rootScene.getWidth() * 0.5 - 25);
+        Enemy fightEnemy = new Enemy(fightImage2, true);
+            fight.getChildren().add(fightEnemy.getNode());
+            
         
         
         // ===== Testing Scene Swapping ===== \\
@@ -187,47 +225,7 @@ public class CMPSC390SoftwareProject extends Application {
 //        grid.setPrefWidth(500);
 //        grid.BackgroundImage("images/textbox.png");
 //        fightLayout.getChildren().add();
-        
-        
 
-        // add the player
-        // Sprite player = new Sprite(new Rectangle(50, 50, 50, 50), false);
-        ImageView image = new ImageView(new Image("images/New_Piskel.png", 50, 50, true, true));
-            image.setY((rootScene.getHeight() -100) * 0.75);
-            image.setX(rootScene.getWidth() / 2 - 25);
-//                 Testing ->
-//                    root.getChildren().add(image);
-        Player player = new Player(image, false);
-            Controller playerCon = new Controller(player.getNode(), player.getVelocity(), rootScene, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
-            player.setController(playerCon);
-                root.getChildren().add(player.getNode());
-                
-        ImageView image2 = new ImageView(new Image("images/Final_Boss.png", 50, 50, true, true));
-            image2.setY((rootScene.getHeight() -100) * 0.25);
-            image2.setX(rootScene.getWidth() * 0.5 - 25);
-        Enemy enemy = new Enemy(image2, true);
-            root.getChildren().add(enemy.getNode());
-            
-        // add boarders to the main scene
-//        Sprite topWall = new Sprite(new Rectangle(0, 0, rootScene.getWidth(), 5), true);
-//        Sprite bottomWall = new Sprite(new Rectangle(0, rootScene.getHeight() - 5 - 100, rootScene.getWidth(), 5), true);
-//        Sprite leftWall = new Sprite(new Rectangle(0, 0, 5, rootScene.getHeight() - 100), true);
-//        Sprite rightWall = new Sprite(new Rectangle(rootScene.getWidth() - 5, 0, 5, rootScene.getHeight() -100), true);
-//            root.getChildren().add(topWall.getNode());
-//            root.getChildren().add(bottomWall.getNode());
-//            root.getChildren().add(leftWall.getNode());
-//            root.getChildren().add(rightWall.getNode());
-//            
-        // add boarders to the fight scene
-        Sprite topWall2 = new Sprite(new Rectangle(0, 0, rootScene.getWidth(), 5), true);
-        Sprite bottomWall2 = new Sprite(new Rectangle(0, rootScene.getHeight() - 5 - 100, rootScene.getWidth(), 5), true);
-        Sprite leftWall2 = new Sprite(new Rectangle(0, 0, 5, rootScene.getHeight() - 100), true);
-        Sprite rightWall2 = new Sprite(new Rectangle(rootScene.getWidth() - 5, 0, 5, rootScene.getHeight() -100), true);    
-            fight.getChildren().add(topWall2.getNode());
-            fight.getChildren().add(bottomWall2.getNode());
-            fight.getChildren().add(leftWall2.getNode());
-            fight.getChildren().add(rightWall2.getNode());
-        
         
         
         AnimationTimer animation = new AnimationTimer()  
@@ -235,42 +233,21 @@ public class CMPSC390SoftwareProject extends Application {
             @Override
             public void handle(long now)
             {
-                player.update(0.016);
+                rootPlayer.update(0.016);
                 
-                player.getCollision().checkCollisionY(topWall.getNode());
-                player.getCollision().checkCollisionY(bottomWall.getNode());
-                player.getCollision().checkCollisionX(leftWall.getNode());
-                player.getCollision().checkCollisionX(rightWall.getNode());
+                rootPlayer.getCollision().checkCollisionY(topWall.getNode());
+                rootPlayer.getCollision().checkCollisionY(bottomWall.getNode());
+                rootPlayer.getCollision().checkCollisionX(leftWall.getNode());
+                rootPlayer.getCollision().checkCollisionX(rightWall.getNode());
                 
-                player.getCollision().checkCollisionX(largeWing.getNode(), largeWing, rootNarrator);
-                player.getCollision().checkCollisionY(largeWing.getNode(), largeWing, rootNarrator);
-                player.getCollision().checkCollisionX(stoneBox.getNode(), stoneBox, rootNarrator);
-                player.getCollision().checkCollisionY(stoneBox.getNode(), stoneBox, rootNarrator);
-                player.getCollision().checkCollisionX(chains.getNode(), chains, rootNarrator);
-                player.getCollision().checkCollisionY(chains.getNode(), chains, rootNarrator);
+                rootPlayer.getCollision().checkCollisionX(largeWing.getNode(), largeWing, rootNarrator);
+                rootPlayer.getCollision().checkCollisionY(largeWing.getNode(), largeWing, rootNarrator);
+                rootPlayer.getCollision().checkCollisionX(stoneBox.getNode(), stoneBox, rootNarrator);
+                rootPlayer.getCollision().checkCollisionY(stoneBox.getNode(), stoneBox, rootNarrator);
+                rootPlayer.getCollision().checkCollisionX(chains.getNode(), chains, rootNarrator);
+                rootPlayer.getCollision().checkCollisionY(chains.getNode(), chains, rootNarrator);
                 
-                //enemy.checkCollision(player, rootScene);
-//                if(moving == false)
-//                {
-//                    switch(player.getVelocity().velDif())
-//                    {
-//                        case -2:
-//                            System.out.println("going left");
-//                            break;
-//                        case -1:
-//                            System.out.println("going up");
-//                            break;
-//                        case 1:
-//                            System.out.println("going down");
-//                            break;
-//                        case 2:
-//                            System.out.println("going right");
-//                            break;
-//                        default:
-//                            break;
-//                    }
-//                }
-                
+                rootEnemy.checkCollision(rootPlayer, fightScene, stage);
             }
         };
         animation.start();
