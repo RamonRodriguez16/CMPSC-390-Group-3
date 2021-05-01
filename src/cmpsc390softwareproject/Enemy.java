@@ -8,6 +8,7 @@ package cmpsc390softwareproject;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.stage.Stage;
 
 /**
  *
@@ -38,16 +39,12 @@ public class Enemy extends Player {
         // place the player in one spot
         // make the player's velocity 0,0
     
-    void checkCollision(Player player, Scene scene)
-    {
-        if(this.getNode().getBoundsInParent().intersects(player.getNode().getBoundsInParent()))
-        {
-            player.getNode().setTranslateX(this.getNode().getLayoutX() - 25);
+    void checkCollision(Player player, Scene fightScene, Stage stage) {
+        if(this.getNode().getBoundsInParent().intersects(player.getNode().getBoundsInParent())) {
+            stage.setScene(fightScene);
             
-                Velocity noVel = new Velocity(player.getNode(), 0, 0);
-                Controller noCon = new Controller(player.getNode(), player.getVelocity(), scene, KeyCode.UNDEFINED, KeyCode.UNDEFINED, KeyCode.UNDEFINED, KeyCode.UNDEFINED);
-                
-                player.setController(noCon);
+            player.getNode().setTranslateX(15);
+            player.getNode().setTranslateY(15);
         }
     }
 }
