@@ -57,15 +57,7 @@ public class CMPSC390SoftwareProject extends Application {
         Button exitButton = new Button("FLEE!");
         exitButton.setOnAction(e -> stage.setScene(scene));
         fightLayout.getChildren().add(exitButton);
-        
-        // Fight Menu
-        /*
-        GridPane grid = new GridPane();
-        grid.setPrefHeight(100);
-        grid.setPrefWidth(500);
-        grid.BackgroundImage("images/textbox.png");
-        fightLayout.getChildren().add();
-        */
+
         
         //Create item largeWing
         ImageView object_Wing = new ImageView(new Image("images/object_Wing.png"));
@@ -97,10 +89,10 @@ public class CMPSC390SoftwareProject extends Application {
             chains.setDesc("I’m not one to judge, but I don’t think there’s "
                     + "any place for chains in a home. Wonder who or what "
                     + "they were for.");
-            // add items
-                root.getChildren().add(largeWing.getNode());
-                root.getChildren().add(stoneBox.getNode());
-                root.getChildren().add(chains.getNode());
+        // add items
+        root.getChildren().add(largeWing.getNode());
+        root.getChildren().add(stoneBox.getNode());
+        root.getChildren().add(chains.getNode());
 
         // add the player
         // Sprite player = new Sprite(new Rectangle(50, 50, 50, 50), false);
