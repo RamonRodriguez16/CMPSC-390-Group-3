@@ -5,6 +5,7 @@
  */
 package cmpsc390softwareproject;
 
+import java.util.Random;
 import javafx.scene.control.Button; 
 /**
  *
@@ -66,4 +67,40 @@ public class HealthBar {
         this.button = button;
     }
     
+    //Battle System Beta 
+    
+    //enemy attacks with different intensity depending on health, gets stronger 
+    //the weaker it gets. The player will not do that, but for testing sake 
+    //they both will have their attacks be based on health.
+    public void attack() {
+        int hit = 0;
+        Random rand = new Random();
+        if(HP == 100) {
+            hit = 10;
+        }
+        else if(HP >= 80 || HP <= 99) {
+            hit = 15;
+        }
+        else if(HP >= 50 || HP <= 79) {
+            hit = 20;
+        }
+        else if(HP <= 49) {
+           hit = rand.nextInt(30) + 5;
+        }
+        //setMessage(name + " attacks with a hit worth " + hit + " hp");
+    }
+    //this system of defense is not final, just testing whether it works
+    public void defend(int hit) {
+        int damage = hit;
+        if(damage > 0) {
+            HP -= damage;
+            //message = name + " defended against the attack but still lost " + damage + " hp";
+            if (HP <= 0) {
+                HP = 0;
+                //message += " and died";
+            }
+        } //else
+            //message = name + " blocked the hit";
+        //setMessage(message);
+    }
 }
