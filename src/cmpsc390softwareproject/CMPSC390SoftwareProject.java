@@ -8,6 +8,7 @@ package cmpsc390softwareproject;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.geometry.Insets;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 /**
@@ -72,51 +74,7 @@ public class CMPSC390SoftwareProject extends Application {
             root.getChildren().add(bottomWall.getNode());
             root.getChildren().add(leftWall.getNode());
             root.getChildren().add(rightWall.getNode());
-        
-//        // create visual boarders
-//        ImageView top_wall = new ImageView(new Image("images/Brick_wall.png"));
-//            top_wall.setFitWidth(rootScene.getWidth() / 10.0);
-//            top_wall.setFitHeight(25);
-//            top_wall.setX(0);
-//            top_wall.setY(0);
-//            Sprite top_wallSprite = new Sprite(top_wall, true);
-//                root.getChildren().add(top_wallSprite.getNode());
-//        ImageView top_wall2 = new ImageView(new Image("images/Brick_wall.png"));
-//            top_wall2.setFitWidth(rootScene.getWidth() / 10.0);
-//            top_wall2.setFitHeight(25);
-//            top_wall2.setX(100);
-//            top_wall2.setY(0);
-//            Sprite top_wallSprite2 = new Sprite(top_wall2, true);
-//                root.getChildren().add(top_wallSprite2.getNode());
-//        ImageView top_wall3 = new ImageView(new Image("images/Brick_wall.png"));
-//            top_wall3.setFitWidth(rootScene.getWidth() / 10.0);
-//            top_wall3.setFitHeight(25);
-//            top_wall3.setX(200);
-//            top_wall3.setY(0);
-//            Sprite top_wallSprite3 = new Sprite(top_wall3, true);
-//                root.getChildren().add(top_wallSprite3.getNode());
-//        ImageView top_wall4 = new ImageView(new Image("images/Brick_wall.png"));
-//            top_wall4.setFitWidth(rootScene.getWidth() / 10.0);
-//            top_wall4.setFitHeight(25);
-//            top_wall4.setX(300);
-//            top_wall4.setY(0);
-//            Sprite top_wallSprite4 = new Sprite(top_wall4, true);
-//                root.getChildren().add(top_wallSprite4.getNode());
-//        ImageView top_wall5 = new ImageView(new Image("images/Brick_wall.png"));
-//            top_wall5.setFitWidth(rootScene.getWidth() / 10.0);
-//            top_wall5.setFitHeight(25);
-//            top_wall5.setX(400);
-//            top_wall5.setY(0);
-//            Sprite top_wallSprite5 = new Sprite(top_wall5, true);
-//                root.getChildren().add(top_wallSprite5.getNode());
-////        ImageView bot_wall = new ImageView(new Image("images/Brick_wall.png"));
-////            bot_wall.setFitWidth(50);
-////            bot_wall.setFitHeight(50);
-////            bot_wall.setX(rootScene.getWidth());
-////            bot_wall.setY(rootScene.getHeight() - (rootScene.getHeight() / 4.0));
-////            Sprite bot_wallSprite = new Sprite(bot_wall, true);
-////                root.getChildren().add(bot_wallSprite.getNode());
-                
+            
         Narrator rootNarrator = new Narrator();
             rootWindow.add(rootNarrator, 0, 1);
         
@@ -187,9 +145,7 @@ public class CMPSC390SoftwareProject extends Application {
             fight.getChildren().add(leftWall2.getNode());
             fight.getChildren().add(rightWall2.getNode());
         
-        Narrator fightNarrator = new Narrator();
-            fightWindow.add(fightNarrator, 0, 1);
-            
+        
         ImageView fightImage = new ImageView(new Image("images/New_Piskel.png", 50, 50, true, true));
             fightImage.setY(100);
             fightImage.setX(120);
@@ -214,31 +170,77 @@ public class CMPSC390SoftwareProject extends Application {
                 enemyButton.setLayoutX(370);
                 enemyButton.setLayoutY(15);
                 fight.getChildren().add(enemyButton);
-            
+        
+        // -- BATTLE MENU -- //    
+        Narrator fightNarrator = new Narrator();
+        StackPane fightMenu = new StackPane();
+        fightWindow.add(fightMenu, 0, 1);
+        fightMenu.getChildren().add(fightNarrator);
+        GridPane battleMenu = new GridPane();
         
         
-        // ===== Testing Scene Swapping ===== \\
-        // Start the Fight
+        Button fleeButton = new Button("FLEE!");
+            fleeButton.setOnAction(e -> stage.setScene(rootScene));
         Button fightButton = new Button("FIGHT!");
-            fightButton.setOnAction(e -> stage.setScene(fightScene));
-            root.getChildren().add(fightButton);
+            fightButton.setOnAction(e -> {
+                // --ATTACK MENU-- //
+                battleMenu.getChildren().remove(fightButton);
+                battleMenu.getChildren().remove(fleeButton);
+                Button punchButton = new Button("PUNCH");
+                punchButton.setOnAction(ap -> {
+                    fight.getChildren().remove(enemyButton);
+                    fightEnemy.setHealth(fightEnemy.getHealth() - 5);           // change this for move damage, add chance to hit.
+                    EnemyHealthBar enemyUpdated = new EnemyHealthBar(fightEnemy.getHealth());
+                    Button enemyButtonUpdated = enemyUpdated.getButton();
+                    enemyButtonUpdated.setLayoutX(370);
+                    enemyButtonUpdated.setLayoutY(15);
+                    fight.getChildren().add(enemyButtonUpdated);
+                });
+                Button pierceButton = new Button("PIERCE");
+                pierceButton.setOnAction(ap -> {
+                    fight.getChildren().remove(enemyButton);
+                    fightEnemy.setHealth(fightEnemy.getHealth() - 10);           // change this for move damage, add chance to hit.
+                    EnemyHealthBar enemyUpdated = new EnemyHealthBar(fightEnemy.getHealth());
+                    Button enemyButtonUpdated = enemyUpdated.getButton();
+                    enemyButtonUpdated.setLayoutX(370);
+                    enemyButtonUpdated.setLayoutY(15);
+                    fight.getChildren().add(enemyButtonUpdated);
+                });
+                Button grabButton = new Button("GRAB");
+                grabButton.setOnAction(ap -> {
+                    // do the same thing here, but instead of changing damage, 
+                    // make it a chance to skip the enemy's turn
+                });
+                Button fireButton = new Button("FIREBOLT");
+                fireButton.setOnAction(ap -> {
+                    fight.getChildren().remove(enemyButton);
+                    fightEnemy.setHealth(fightEnemy.getHealth() - 24);           // change this for move damage, add chance to hit.
+                    EnemyHealthBar enemyUpdated = new EnemyHealthBar(fightEnemy.getHealth());
+                    Button enemyButtonUpdated = enemyUpdated.getButton();
+                    enemyButtonUpdated.setLayoutX(370);
+                    enemyButtonUpdated.setLayoutY(15);
+                    fight.getChildren().add(enemyButtonUpdated);
+                });
+                
+                battleMenu.add(punchButton, 0, 0);
+                battleMenu.add(pierceButton, 1, 0);
+                battleMenu.add(grabButton, 0, 1);
+                battleMenu.add(fireButton, 1, 1);
+                
+                battleMenu.setPadding(new Insets(20, 100, 20, 150));
+                battleMenu.setHgap(100);
+                battleMenu.setVgap(10);
+            });
         
-        // Exit the Fight
-        Button exitButton = new Button("FLEE!");
-            exitButton.setOnAction(e -> stage.setScene(rootScene));
-            fight.getChildren().add(exitButton);
-        
-        
-        
-        // ===== Fight Menu ===== \\
-//        GridPane grid = new GridPane();
-//        grid.setPrefHeight(100);
-//        grid.setPrefWidth(500);
-//        grid.BackgroundImage("images/textbox.png");
-//        fightLayout.getChildren().add();
-
-        
-        
+        fightMenu.getChildren().add(battleMenu);
+            battleMenu.setMinSize(500, 100);
+            battleMenu.setPadding(new Insets(30, 150, 30, 150));
+            battleMenu.setHgap(100);
+            battleMenu.add(fightButton, 0, 0);
+            battleMenu.add(fleeButton, 1, 0);
+        // --END BATTLE MENU -- //            
+                
+                
         AnimationTimer animation = new AnimationTimer()  
         {
             @Override
@@ -263,6 +265,7 @@ public class CMPSC390SoftwareProject extends Application {
         };
         animation.start();
         
-        stage.show();
+        stage.show();  
     }
+        
 }

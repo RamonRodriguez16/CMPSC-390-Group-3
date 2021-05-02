@@ -38,29 +38,6 @@ public class Narrator extends StackPane{
         isDescribing = false;
     }
     
-    
-    
-    private void describeObject(Sprite sprite, Player player)
-    {
-        isDescribing = true;
-        // should stop the player from moving (can be done by setting velocities to '0')
-        player.getSprite().setVelocity(0, 0);
-        
-        // should display text to the player about the interactive object
-        // sprite.description();
-    }
-    
-    private void playerStats(Player player)
-    {
-        // present the player's stats to the user
-        System.out.println(player.getName());
-        // should state player's HP as well
-        System.out.println(player.getType());
-        System.out.println(player.getPower());
-        System.out.println(player.getDefense());
-        System.out.println(player.getEnergy());
-    }
-    
     public void setText(String newText){
         getChildren().remove(myText);
         
@@ -74,11 +51,4 @@ public class Narrator extends StackPane{
         
         this.getChildren().add(myText);
     }
-    
-    /*
-    private void enemyStats(Enemy enemy)
-    {
-        // very similar to player but enemies will have a few more stats
-    }
-    */
 }
