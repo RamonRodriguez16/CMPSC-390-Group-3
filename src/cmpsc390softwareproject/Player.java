@@ -23,6 +23,7 @@ public class Player extends Sprite {
         power = 0;
         defense = 0;
         energy = 0;
+        health = 100;
         type = "dummy";
     }
     public void setName(String n) {

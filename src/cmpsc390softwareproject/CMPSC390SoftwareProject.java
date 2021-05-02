@@ -25,8 +25,6 @@ import javafx.stage.Stage;
 public class CMPSC390SoftwareProject extends Application {
     public static void main(String[] args) 
     {
-        PopupFrame frame = new PopupFrame();
-        frame.show();
         launch(args);
     }
     
@@ -193,18 +191,29 @@ public class CMPSC390SoftwareProject extends Application {
             fightWindow.add(fightNarrator, 0, 1);
             
         ImageView fightImage = new ImageView(new Image("images/New_Piskel.png", 50, 50, true, true));
-            fightImage.setY((rootScene.getHeight() -100) * 0.75);
-            fightImage.setX(rootScene.getWidth() / 2 - 25);
+            fightImage.setY(100);
+            fightImage.setX(120);
         Player fightPlayer = new Player(fightImage, false);
             Controller fightCon = new Controller(fightPlayer.getNode(), fightPlayer.getVelocity(), fightScene, KeyCode.UNDEFINED, KeyCode.UNDEFINED, KeyCode.UNDEFINED, KeyCode.UNDEFINED);
             fightPlayer.setController(playerCon);
                 fight.getChildren().add(fightPlayer.getNode());
+        HealthBar playerBar = new HealthBar(fightPlayer.getHealth());
+                Button playerButton = playerBar.getButton();
+                playerButton.setLayoutX(100);
+                playerButton.setLayoutY(15);
+                fight.getChildren().add(playerButton);
+                
                 
         ImageView fightImage2 = new ImageView(new Image("images/Final_Boss.png", 50, 50, true, true));
-            fightImage2.setY((rootScene.getHeight() -100) * 0.25);
-            fightImage2.setX(rootScene.getWidth() * 0.5 - 25);
+            fightImage2.setY(100);
+            fightImage2.setX(400);
         Enemy fightEnemy = new Enemy(fightImage2, true);
             fight.getChildren().add(fightEnemy.getNode());
+        EnemyHealthBar enemyBar = new EnemyHealthBar(fightEnemy.getHealth());
+                Button enemyButton = enemyBar.getButton();
+                enemyButton.setLayoutX(370);
+                enemyButton.setLayoutY(15);
+                fight.getChildren().add(enemyButton);
             
         
         
