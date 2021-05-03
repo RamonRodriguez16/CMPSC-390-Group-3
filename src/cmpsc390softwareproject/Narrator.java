@@ -118,13 +118,12 @@ public class Narrator extends StackPane{
                     
                     p.setHealth(p.getHealth() - damage);                   // change this for move damage, add chance to hit.
                     pBar.setHP(p.getHealth());
+                    battleMenu.getChildren().clear();
                     if(p.getHealth() <= 0){
-                        battleMenu.getChildren().clear();
                         fn.setText("DESTROYED... YOU LOSE.");
                         battleMenu.add(fleeButton, 1, 1);
                     }
                     else {
-                        battleMenu.getChildren().clear();
                         fn.setAttacking(true);
                     }
     }
@@ -153,12 +152,10 @@ public class Narrator extends StackPane{
                     eBar.setHP(e.getHealth());
                     battleMenu.getChildren().clear();
                     if(e.getHealth() <= 0){
-                        battleMenu.getChildren().clear();
                         fn.setText("TOTAL SLAUGHTER, YOU WIN");
                         battleMenu.add(fleeButton, 1, 1);
                     }
                     else {
-                        battleMenu.getChildren().clear();
                         fn.setAttacking(false);
                     }
     }
