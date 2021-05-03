@@ -36,6 +36,7 @@ public class HealthBar {
      */
     public void setHP(int HP) {
         this.HP = HP;
+        button.setText("HP: " + HP);
     }
 
     /**

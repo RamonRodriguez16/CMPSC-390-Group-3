@@ -8,7 +8,6 @@ package cmpsc390softwareproject;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.geometry.Insets;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -163,9 +162,9 @@ public class CMPSC390SoftwareProject extends Application {
         ImageView fightImage2 = new ImageView(new Image("images/Final_Boss.png", 50, 50, true, true));
             fightImage2.setY(100);
             fightImage2.setX(400);
-        Enemy fightEnemy = new Enemy(fightImage2, true);
-            fight.getChildren().add(fightEnemy.getNode());
-        EnemyHealthBar enemyBar = new EnemyHealthBar(fightEnemy.getHealth());
+        Enemy enemy1 = new Enemy(fightImage2, true);
+            fight.getChildren().add(enemy1.getNode());
+        HealthBar enemyBar = new HealthBar(enemy1.getHealth());
                 Button enemyButton = enemyBar.getButton();
                 enemyButton.setLayoutX(370);
                 enemyButton.setLayoutY(15);
@@ -188,23 +187,17 @@ public class CMPSC390SoftwareProject extends Application {
                 battleMenu.getChildren().remove(fleeButton);
                 Button punchButton = new Button("PUNCH");
                 punchButton.setOnAction(ap -> {
-                    fight.getChildren().remove(enemyButton);
-                    fightEnemy.setHealth(fightEnemy.getHealth() - 5);           // change this for move damage, add chance to hit.
-                    EnemyHealthBar enemyUpdated = new EnemyHealthBar(fightEnemy.getHealth());
-                    Button enemyButtonUpdated = enemyUpdated.getButton();
-                    enemyButtonUpdated.setLayoutX(370);
-                    enemyButtonUpdated.setLayoutY(15);
-                    fight.getChildren().add(enemyButtonUpdated);
+                    enemy1.setHealth(enemy1.getHealth() - 5);                   // change this for move damage, add chance to hit.
+                    enemyBar.setHP(enemy1.getHealth());
+                    battleMenu.getChildren().clear();
+                    Narrator.fofBattleMenu(battleMenu, fightButton, fleeButton);
                 });
                 Button pierceButton = new Button("PIERCE");
                 pierceButton.setOnAction(ap -> {
-                    fight.getChildren().remove(enemyButton);
-                    fightEnemy.setHealth(fightEnemy.getHealth() - 10);           // change this for move damage, add chance to hit.
-                    EnemyHealthBar enemyUpdated = new EnemyHealthBar(fightEnemy.getHealth());
-                    Button enemyButtonUpdated = enemyUpdated.getButton();
-                    enemyButtonUpdated.setLayoutX(370);
-                    enemyButtonUpdated.setLayoutY(15);
-                    fight.getChildren().add(enemyButtonUpdated);
+                    enemy1.setHealth(enemy1.getHealth() - 10);                  // change this for move damage, add chance to hit.
+                    enemyBar.setHP(enemy1.getHealth());
+                    battleMenu.getChildren().clear();
+                    Narrator.fofBattleMenu(battleMenu, fightButton, fleeButton);
                 });
                 Button grabButton = new Button("GRAB");
                 grabButton.setOnAction(ap -> {
@@ -213,13 +206,10 @@ public class CMPSC390SoftwareProject extends Application {
                 });
                 Button fireButton = new Button("FIREBOLT");
                 fireButton.setOnAction(ap -> {
-                    fight.getChildren().remove(enemyButton);
-                    fightEnemy.setHealth(fightEnemy.getHealth() - 24);           // change this for move damage, add chance to hit.
-                    EnemyHealthBar enemyUpdated = new EnemyHealthBar(fightEnemy.getHealth());
-                    Button enemyButtonUpdated = enemyUpdated.getButton();
-                    enemyButtonUpdated.setLayoutX(370);
-                    enemyButtonUpdated.setLayoutY(15);
-                    fight.getChildren().add(enemyButtonUpdated);
+                    enemy1.setHealth(enemy1.getHealth() - 24);                  // change this for move damage, add chance to hit.
+                    enemyBar.setHP(enemy1.getHealth());
+                    battleMenu.getChildren().clear();
+                    Narrator.fofBattleMenu(battleMenu, fightButton, fleeButton);
                 });
                 
                 Narrator.attackBattleMenu(battleMenu, punchButton, pierceButton,// Makes the Attack menu

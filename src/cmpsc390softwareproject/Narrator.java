@@ -74,4 +74,8 @@ public class Narrator extends StackPane{
                 battleMenu.setHgap(100);
                 battleMenu.setVgap(10);
     }
+    
+    public static void clearBattleMenu(GridPane battleMenu){
+        battleMenu.getChildren().clear();
+    }
 }
