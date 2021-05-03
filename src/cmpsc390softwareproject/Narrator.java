@@ -5,8 +5,11 @@
  */
 package cmpsc390softwareproject;
 
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -38,29 +41,6 @@ public class Narrator extends StackPane{
         isDescribing = false;
     }
     
-    
-    
-    private void describeObject(Sprite sprite, Player player)
-    {
-        isDescribing = true;
-        // should stop the player from moving (can be done by setting velocities to '0')
-        player.getSprite().setVelocity(0, 0);
-        
-        // should display text to the player about the interactive object
-        // sprite.description();
-    }
-    
-    private void playerStats(Player player)
-    {
-        // present the player's stats to the user
-        System.out.println(player.getName());
-        // should state player's HP as well
-        System.out.println(player.getType());
-        System.out.println(player.getPower());
-        System.out.println(player.getDefense());
-        System.out.println(player.getEnergy());
-    }
-    
     public void setText(String newText){
         getChildren().remove(myText);
         
@@ -75,10 +55,23 @@ public class Narrator extends StackPane{
         this.getChildren().add(myText);
     }
     
-    /*
-    private void enemyStats(Enemy enemy)
-    {
-        // very similar to player but enemies will have a few more stats
+    public static void fofBattleMenu(GridPane battleMenu, Button fightButton, Button fleeButton){
+            battleMenu.setMinSize(500, 100);
+            battleMenu.setPadding(new Insets(30, 150, 30, 150));
+            battleMenu.setHgap(100);
+            battleMenu.add(fightButton, 0, 0);
+            battleMenu.add(fleeButton, 1, 0);
     }
-    */
+    
+    public static void attackBattleMenu(GridPane battleMenu, Button punchButton, Button pierceButton,
+            Button grabButton, Button fireButton){
+                battleMenu.add(punchButton, 0, 0);
+                battleMenu.add(pierceButton, 1, 0);
+                battleMenu.add(grabButton, 0, 1);
+                battleMenu.add(fireButton, 1, 1);
+                
+                battleMenu.setPadding(new Insets(20, 100, 20, 150));
+                battleMenu.setHgap(100);
+                battleMenu.setVgap(10);
+    }
 }
