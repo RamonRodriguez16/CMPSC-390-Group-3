@@ -5,9 +5,11 @@
  */
 package cmpsc390softwareproject;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -21,7 +23,7 @@ import javafx.scene.text.Text;
  * @author ramon, david
  */
 public class Narrator extends StackPane{
-    private boolean isDescribing;
+    private boolean attacking = true;
     String textOutput = "";
     Rectangle n = new Rectangle();
     
@@ -38,7 +40,6 @@ public class Narrator extends StackPane{
         
         getChildren().add(n);
         getChildren().add(myText);
-        isDescribing = false;
     }
     
     public void setText(String newText){
@@ -55,6 +56,13 @@ public class Narrator extends StackPane{
         this.getChildren().add(myText);
     }
     
+    public void setAttacking(Boolean status){
+        attacking = status;
+    }
+    public Boolean getAttacking(){
+        return attacking;
+    }
+    
     public static void fofBattleMenu(GridPane battleMenu, Button fightButton, Button fleeButton){
             battleMenu.setMinSize(500, 100);
             battleMenu.setPadding(new Insets(30, 150, 30, 150));
@@ -64,10 +72,10 @@ public class Narrator extends StackPane{
     }
     
     public static void attackBattleMenu(GridPane battleMenu, Button punchButton, Button pierceButton,
-            Button grabButton, Button fireButton){
+            Button shockButton, Button fireButton){
                 battleMenu.add(punchButton, 0, 0);
                 battleMenu.add(pierceButton, 1, 0);
-                battleMenu.add(grabButton, 0, 1);
+                battleMenu.add(shockButton, 0, 1);
                 battleMenu.add(fireButton, 1, 1);
                 
                 battleMenu.setPadding(new Insets(20, 100, 20, 150));
@@ -78,4 +86,78 @@ public class Narrator extends StackPane{
     public static void clearBattleMenu(GridPane battleMenu){
         battleMenu.getChildren().clear();
     }
+
+    public static void enemyAttack(Player p, HealthBar pBar, Narrator fn, GridPane battleMenu, Button fightButton, Button fleeButton){
+                    int damage;
+                    double odds = Math.random();
+                    String attackName = "";
+                    
+                    battleMenu.getChildren().clear();
+                    
+                    
+                    if (odds <= 0.05){
+                        damage = 50;
+                        attackName = "EVISCERATING FLAMES";
+                    }
+                    else if (odds <= 0.4){
+                        damage = 14;
+                        attackName = "WRETCHED CHOMP";
+                    }
+                    else if (odds > 0.7){
+                        damage = 6;
+                        attackName = "DOOM CLAW";
+                    }
+                    else damage = 0;
+        
+                    if (damage == 0){
+                        fn.setText("Abysmal Detsoob missed!");
+                    }
+                    else 
+                        fn.setText("Abysmal Detsoob used " + attackName + " for " + damage + " damage!");
+                    
+                    
+                    p.setHealth(p.getHealth() - damage);                   // change this for move damage, add chance to hit.
+                    pBar.setHP(p.getHealth());
+                    battleMenu.getChildren().clear();
+                    if(p.getHealth() <= 0){
+                        fn.setText("DESTROYED... YOU LOSE.");
+                        battleMenu.add(fleeButton, 1, 1);
+                    }
+                    else {
+                        fn.setAttacking(true);
+                    }
+    }
+    
+                        
+    public static void attack(Button attack, Enemy e, Player p, HealthBar pBar, HealthBar eBar, Narrator fn, GridPane battleMenu, Button fightButton, Button fleeButton){
+                    String attackName = attack.getText();
+                    int damage = 0;
+                    
+                    if(attackName.equals("PUNCH")){
+                        damage = 5;
+                    }
+                    else if(attackName.equals("PIERCE")){
+                        damage = 15;
+                    }
+                    else if(attackName.equals("FIREBOLT")){
+                        damage = 24;
+                    }
+                    else if(attackName.equals("SHOCK")){
+                        damage = 8;
+                    }
+                    
+                    fn.setText("You used " + attackName + " for " + damage + " damage!");
+        
+                    e.setHealth(e.getHealth() - damage);                   // change this for move damage, add chance to hit.
+                    eBar.setHP(e.getHealth());
+                    battleMenu.getChildren().clear();
+                    if(e.getHealth() <= 0){
+                        fn.setText("TOTAL SLAUGHTER, YOU WIN");
+                        battleMenu.add(fleeButton, 1, 1);
+                    }
+                    else {
+                        fn.setAttacking(false);
+                    }
+    }
+    
 }

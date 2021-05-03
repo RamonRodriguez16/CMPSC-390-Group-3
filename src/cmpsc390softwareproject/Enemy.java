@@ -43,6 +43,12 @@ public class Enemy extends Player {
         if(this.getNode().getBoundsInParent().intersects(player.getNode().getBoundsInParent())) {
             stage.setScene(fightScene);
             
+            // Fixes character still moving after fight //
+            Controller newCon = new Controller(player.getNode(), 
+                    player.getVelocity(), fightScene, KeyCode.UNDEFINED, 
+                    KeyCode.UNDEFINED, KeyCode.UNDEFINED, KeyCode.UNDEFINED);
+            player.setController(newCon);
+            
             player.getNode().setTranslateX(15);
             player.getNode().setTranslateY(15);
         }
