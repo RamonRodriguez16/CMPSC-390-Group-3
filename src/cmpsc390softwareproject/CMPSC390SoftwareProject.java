@@ -222,22 +222,12 @@ public class CMPSC390SoftwareProject extends Application {
                     fight.getChildren().add(enemyButtonUpdated);
                 });
                 
-                battleMenu.add(punchButton, 0, 0);
-                battleMenu.add(pierceButton, 1, 0);
-                battleMenu.add(grabButton, 0, 1);
-                battleMenu.add(fireButton, 1, 1);
-                
-                battleMenu.setPadding(new Insets(20, 100, 20, 150));
-                battleMenu.setHgap(100);
-                battleMenu.setVgap(10);
+                Narrator.attackBattleMenu(battleMenu, punchButton, pierceButton,// Makes the Attack menu
+                        grabButton, fireButton); 
             });
         
         fightMenu.getChildren().add(battleMenu);
-            battleMenu.setMinSize(500, 100);
-            battleMenu.setPadding(new Insets(30, 150, 30, 150));
-            battleMenu.setHgap(100);
-            battleMenu.add(fightButton, 0, 0);
-            battleMenu.add(fleeButton, 1, 0);
+            Narrator.fofBattleMenu(battleMenu, fightButton, fleeButton);        // Makes the Fight or Flee menu
         // --END BATTLE MENU -- //            
                 
                 

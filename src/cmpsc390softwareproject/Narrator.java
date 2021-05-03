@@ -5,8 +5,11 @@
  */
 package cmpsc390softwareproject;
 
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -50,5 +53,25 @@ public class Narrator extends StackPane{
         myText.setY(n.getY() + 30);
         
         this.getChildren().add(myText);
+    }
+    
+    public static void fofBattleMenu(GridPane battleMenu, Button fightButton, Button fleeButton){
+            battleMenu.setMinSize(500, 100);
+            battleMenu.setPadding(new Insets(30, 150, 30, 150));
+            battleMenu.setHgap(100);
+            battleMenu.add(fightButton, 0, 0);
+            battleMenu.add(fleeButton, 1, 0);
+    }
+    
+    public static void attackBattleMenu(GridPane battleMenu, Button punchButton, Button pierceButton,
+            Button grabButton, Button fireButton){
+                battleMenu.add(punchButton, 0, 0);
+                battleMenu.add(pierceButton, 1, 0);
+                battleMenu.add(grabButton, 0, 1);
+                battleMenu.add(fireButton, 1, 1);
+                
+                battleMenu.setPadding(new Insets(20, 100, 20, 150));
+                battleMenu.setHgap(100);
+                battleMenu.setVgap(10);
     }
 }
