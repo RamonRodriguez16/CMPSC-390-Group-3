@@ -5,9 +5,11 @@
  */
 package cmpsc390softwareproject;
 
+import static cmpsc390softwareproject.Narrator.fofBattleMenu;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.event.EventHandler;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -15,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -187,37 +190,48 @@ public class CMPSC390SoftwareProject extends Application {
                 battleMenu.getChildren().remove(fleeButton);
                 Button punchButton = new Button("PUNCH");
                 punchButton.setOnAction(ap -> {
-                    enemy1.setHealth(enemy1.getHealth() - 5);                   // change this for move damage, add chance to hit.
-                    enemyBar.setHP(enemy1.getHealth());
-                    battleMenu.getChildren().clear();
-                    Narrator.fofBattleMenu(battleMenu, fightButton, fleeButton);
+                    Narrator.attack(punchButton, enemy1, fightPlayer, playerBar, enemyBar, fightNarrator,
+                            battleMenu, fightButton, fleeButton);
                 });
                 Button pierceButton = new Button("PIERCE");
                 pierceButton.setOnAction(ap -> {
-                    enemy1.setHealth(enemy1.getHealth() - 10);                  // change this for move damage, add chance to hit.
-                    enemyBar.setHP(enemy1.getHealth());
-                    battleMenu.getChildren().clear();
-                    Narrator.fofBattleMenu(battleMenu, fightButton, fleeButton);
+                    Narrator.attack(pierceButton, enemy1, fightPlayer, playerBar, enemyBar, fightNarrator,
+                            battleMenu, fightButton, fleeButton);
                 });
-                Button grabButton = new Button("GRAB");
-                grabButton.setOnAction(ap -> {
-                    // do the same thing here, but instead of changing damage, 
-                    // make it a chance to skip the enemy's turn
+                Button shockButton = new Button("SHOCK");
+                shockButton.setOnAction(ap -> {
+                    Narrator.attack(shockButton, enemy1, fightPlayer, playerBar, enemyBar, fightNarrator,
+                            battleMenu, fightButton, fleeButton);
                 });
                 Button fireButton = new Button("FIREBOLT");
                 fireButton.setOnAction(ap -> {
-                    enemy1.setHealth(enemy1.getHealth() - 24);                  // change this for move damage, add chance to hit.
-                    enemyBar.setHP(enemy1.getHealth());
-                    battleMenu.getChildren().clear();
-                    Narrator.fofBattleMenu(battleMenu, fightButton, fleeButton);
+                    Narrator.attack(fireButton, enemy1, fightPlayer, playerBar, enemyBar, fightNarrator,
+                            battleMenu, fightButton, fleeButton);
                 });
                 
                 Narrator.attackBattleMenu(battleMenu, punchButton, pierceButton,// Makes the Attack menu
-                        grabButton, fireButton); 
+                        shockButton, fireButton); 
             });
         
         fightMenu.getChildren().add(battleMenu);
             Narrator.fofBattleMenu(battleMenu, fightButton, fleeButton);        // Makes the Fight or Flee menu
+            
+        // Mouse click to continue or back out of attack menu //
+        battleMenu.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                battleMenu.getChildren().clear();
+                fightNarrator.setText("");
+                if(fightNarrator.getAttacking()){
+                   //user should attack
+                   Narrator.fofBattleMenu(battleMenu, fightButton, fleeButton);
+                }
+                else{
+                    //enemy should attacked
+                    Narrator.enemyAttack(fightPlayer, playerBar, fightNarrator, battleMenu, fightButton, fleeButton);
+                }
+            }
+        });
         // --END BATTLE MENU -- //            
                 
                 
